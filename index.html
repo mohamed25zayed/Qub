@@ -1,14 +1,28 @@
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    
+    <!-- ميزات التطبيق المثبت (PWA) -->
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    <meta name="theme-color" content="#059669">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="قُـبَّـة">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- أيقونة التطبيق -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23059669'/%3E%3Cpath d='M50 20C35 20 25 35 25 50V75H75V50C75 35 65 20 50 20Z' fill='white'/%3E%3Cpath d='M50 10V20M50 15H45M50 15H55' stroke='white' stroke-width='2'/%3E%3C/svg%3E">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23059669'/%3E%3Cpath d='M50 20C35 20 25 35 25 50V75H75V50C75 35 65 20 50 20Z' fill='white'/%3E%3C/svg%3E">
+
+    <!-- Manifest JSON -->
+    <link rel="manifest" href="data:application/manifest+json,%7B%22name%22%3A%22%D9%82%D9%8F%D9%80%D8%A8%D9%91%D9%8E%D9%80%D8%A9%22%2C%22short_name%22%3A%22%D9%82%D8%A8%D8%A9%22%2C%22start_url%22%3A%22.%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%23ffffff%22%2C%22theme_color%22%3A%22%23059669%22%2C%22icons%22%3A%5B%7B%22src%22%3A%22data%3Aimage%2Fsvg%2Bxml%2C%253Csvg%2520xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%2520viewBox%3D%270%25200%2520100%2520100%27%253E%253Crect%2520width%3D%27100%27%2520height%3D%27100%27%2520rx%3D%2720%27%2520fill%3D%27%2523059669%27%2F%253E%253Cpath%2520d%3D%27M50%252020C35%252020%252025%252035%252025%252050V75H75V50C75%252035%252065%252020%252050%252020Z%27%2520fill%3D%27white%27%2F%253E%253C%2Fsvg%3E%22%2C%22sizes%22%3A%22512x512%22%2C%22type%22%3A%22image%2Fsvg%2Bxml%22%2C%22purpose%22%3A%22any%20maskable%22%7D%5D%7D">
+
     <title>قُـبَّـة | المطور محمد أحمد زايد</title>
+    
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Tajawal:wght@300;400;500;700;900&display=swap');
 
@@ -17,7 +31,7 @@
             --text-main: #1f2937;
             --text-muted: #6b7280;
             --primary: #059669;
-            --accent-gray: #f3f4f6;
+            --accent-gray: #f9fafb;
         }
 
         body {
@@ -27,6 +41,7 @@
             margin: 0; padding: 0;
             overflow-x: hidden;
             -webkit-tap-highlight-color: transparent;
+            padding-top: env(safe-area-inset-top); /* دعم الهواتف الحديثة */
         }
 
         .quran-text { font-family: 'Amiri', serif; }
@@ -35,102 +50,106 @@
         #loading-screen {
             position: fixed; inset: 0; background: #fff;
             display: flex; flex-direction: column; align-items: center; justify-content: center;
-            z-index: 10000; transition: opacity 0.5s ease;
+            z-index: 10000; transition: opacity 0.6s ease;
         }
 
         .liquid-container {
-            width: 100px; height: 100px; border-radius: 50%;
-            border: 4px solid var(--primary); position: relative;
+            width: 80px; height: 80px; border-radius: 50%;
+            border: 3px solid var(--primary); position: relative;
             overflow: hidden; background: #fff;
         }
 
         .liquid-wave {
             position: absolute; top: 100%; left: -50%; width: 200%; height: 200%;
-            background: var(--primary); border-radius: 40%;
+            background: var(--primary); border-radius: 42%;
             animation: move-wave 3s infinite linear forwards;
         }
 
         @keyframes move-wave {
             0% { transform: translateY(0) rotate(0deg); }
-            100% { transform: translateY(-110%) rotate(360deg); }
+            100% { transform: translateY(-115%) rotate(360deg); }
         }
 
         /* إدارة الصفحات */
         .page-container {
-            display: none; padding: 20px 20px 130px 20px;
+            display: none; padding: 12px 16px 120px 16px;
             min-height: 100vh; width: 100%;
         }
-        .page-container.active { display: block; animation: pageFadeIn 0.3s ease; }
+        .page-container.active { display: block; animation: pageFadeIn 0.3s ease-out; }
 
-        @keyframes pageFadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes pageFadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
 
         .white-card {
             background: #fff; border: 1px solid #f1f5f9;
-            border-radius: 24px; padding: 20px;
-            margin-bottom: 16px; box-shadow: 0 4px 10px -2px rgba(0,0,0,0.02);
+            border-radius: 20px; padding: 16px;
+            margin-bottom: 12px; box-shadow: 0 2px 8px -2px rgba(0,0,0,0.02);
         }
 
         /* التنقل السفلي */
         .nav-bar {
             position: fixed; bottom: 0; left: 0; right: 0;
-            background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(12px);
+            background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(10px);
             display: flex; justify-content: space-around;
-            padding: 12px 0 32px 0; border-top: 1px solid #f1f5f9; z-index: 5000;
+            padding: 8px 0 calc(8px + env(safe-area-inset-bottom)) 0; 
+            border-top: 1px solid #f1f5f9; z-index: 5000;
         }
         .nav-btn {
             color: #9ca3af; display: flex; flex-direction: column;
-            align-items: center; font-size: 10px; font-weight: 700;
+            align-items: center; font-size: 9px; font-weight: 700; transition: 0.2s;
         }
-        .nav-btn.active { color: var(--primary); }
+        .nav-btn.active { color: var(--primary); transform: translateY(-2px); }
 
-        /* نوافذ مودال */
-        .modal-overlay {
-            position: fixed; inset: 0; background: rgba(0,0,0,0.5);
+        /* نافذة الإلهام (تصحيح التمركز) */
+        .inspiration-overlay {
+            position: fixed; inset: 0; background: rgba(0,0,0,0.4);
             backdrop-filter: blur(4px); display: none;
-            align-items: center; justify-content: center; z-index: 6000; padding: 25px;
+            align-items: center; justify-content: center; /* تمركز عمودي وأفقي */
+            z-index: 8000; padding: 20px;
         }
-        .modal-overlay.active { display: flex; }
+        .inspiration-overlay.active { display: flex; }
+
         .content-modal {
-            background: #fff; border-radius: 28px; padding: 30px 20px;
-            text-align: center; position: relative; max-width: 95%; width: auto;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+            background: #fff; border-radius: 28px; padding: 32px 24px;
+            text-align: center; position: relative; max-width: 90%; width: auto;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
         }
 
-        /* التفسير */
+        /* التفسير (Bottom Sheet) */
         #tafsir-sheet {
             position: fixed; bottom: -100%; left: 0; right: 0;
-            background: #fff; border-radius: 32px 32px 0 0;
-            padding: 30px 20px 50px 20px; z-index: 7000;
+            background: #fff; border-radius: 24px 24px 0 0;
+            padding: 24px 20px calc(24px + env(safe-area-inset-bottom)) 20px; 
+            z-index: 7000;
             box-shadow: 0 -10px 40px rgba(0,0,0,0.1);
-            transition: bottom 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+            transition: bottom 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
         }
         #tafsir-sheet.active { bottom: 0; }
 
         .heart-pulse {
-            width: 65px; height: 65px; background: #fee2e2; color: #ef4444;
+            width: 55px; height: 55px; background: #fee2e2; color: #ef4444;
             border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            font-size: 24px; margin: 20px auto;
-            animation: heartPulse 1.5s infinite; cursor: pointer;
+            font-size: 20px; margin: 20px auto;
+            animation: heartPulse 1.8s infinite; cursor: pointer;
         }
         @keyframes heartPulse {
-            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4); }
-            70% { transform: scale(1.1); box-shadow: 0 0 0 15px rgba(239, 68, 68, 0); }
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.3); }
+            70% { transform: scale(1.1); box-shadow: 0 0 0 12px rgba(239, 68, 68, 0); }
             100% { transform: scale(1); }
         }
 
         .scroll-wrapper {
-            display: flex; overflow-x: auto; gap: 12px;
-            padding: 4px 0 16px 0; scrollbar-width: none;
+            display: flex; overflow-x: auto; gap: 10px;
+            padding: 5px 0 10px 0; scrollbar-width: none;
         }
         .scroll-wrapper::-webkit-scrollbar { display: none; }
         .recommendation-card {
-            min-width: 250px; background: #f9fafb;
-            border-right: 4px solid var(--primary);
-            padding: 16px; border-radius: 16px;
+            min-width: 220px; background: #f9fafb;
+            border-right: 3px solid var(--primary);
+            padding: 12px; border-radius: 12px;
         }
 
-        .lantern-sway { animation: lantern-sway 3s ease-in-out infinite; transform-origin: top center; }
-        @keyframes lantern-sway { 0%, 100% { transform: rotate(-6deg); } 50% { transform: rotate(6deg); } }
+        .lantern-sway { animation: lantern-sway 3.5s ease-in-out infinite; transform-origin: top center; }
+        @keyframes lantern-sway { 0%, 100% { transform: rotate(-5deg); } 50% { transform: rotate(5deg); } }
 
         .tabular-nums { font-variant-numeric: tabular-nums; }
     </style>
@@ -142,416 +161,308 @@
         <div class="liquid-container">
             <div class="liquid-wave"></div>
         </div>
-        <h2 class="mt-6 text-2xl font-black text-gray-800 tracking-widest uppercase">قُـبَّـة</h2>
-        <div class="mt-4 flex flex-col items-center">
-            <span class="text-[9px] text-gray-400 uppercase tracking-widest font-bold tracking-[2px]">بواسطة المطور</span>
-            <p class="text-sm text-emerald-600 font-black mt-1">محمد أحمد زايد</p>
+        <h2 class="mt-4 text-xl font-black text-gray-800 tracking-[4px] uppercase">قُـبَّـة</h2>
+        <div class="mt-2 text-center">
+            <span class="text-[8px] text-gray-400 uppercase font-bold tracking-[2px]">عرض الموقع بواسطة المطور</span>
+            <p class="text-xs text-emerald-600 font-black">محمد أحمد زايد</p>
         </div>
     </div>
 
-    <!-- نافذة القلب (الإلهام) -->
-    <div id="inspiration-modal" class="modal-overlay" onclick="this.classList.remove('active')">
+    <!-- نافذة الإلهام -->
+    <div id="inspiration-modal" class="inspiration-overlay" onclick="this.classList.remove('active')">
         <div class="content-modal" onclick="event.stopPropagation()">
-            <div class="absolute -top-8 left-1/2 -translate-x-1/2 w-16 h-16 bg-red-500 rounded-full flex items-center justify-center text-white shadow-lg">
+            <div class="absolute -top-7 left-1/2 -translate-x-1/2 w-14 h-14 bg-red-500 rounded-full flex items-center justify-center text-white shadow-lg text-xl">
                 <i class="fas fa-heart"></i>
             </div>
-            <p id="inspiration-text" class="quran-text text-2xl leading-relaxed text-gray-800 mb-8 mt-6"></p>
-            <button onclick="shareQuote()" class="bg-emerald-600 text-white px-10 py-3 rounded-2xl font-bold active:scale-95 transition-all text-sm">
-                <i class="fas fa-share-alt ml-2"></i> مشاركة النور
+            <p id="inspiration-text" class="quran-text text-xl leading-relaxed text-gray-800 mb-6 mt-4 italic"></p>
+            <button onclick="shareQuote()" class="w-full bg-emerald-600 text-white py-3 rounded-xl font-bold active:scale-95 transition-all text-xs flex items-center justify-center gap-2">
+                <i class="fas fa-share-nodes"></i> مشاركة النور
             </button>
         </div>
     </div>
 
     <!-- نافذة التفسير -->
     <div id="tafsir-sheet">
-        <div class="w-12 h-1 bg-gray-200 rounded-full mx-auto mb-6"></div>
-        <div class="flex justify-between items-center mb-5">
-            <h4 id="tafsir-title" class="font-black text-emerald-600">تفسير الآية</h4>
-            <button onclick="closeTafsir()" class="text-gray-300 text-2xl"><i class="fas fa-times-circle"></i></button>
+        <div class="w-10 h-1 bg-gray-200 rounded-full mx-auto mb-6"></div>
+        <div class="flex justify-between items-center mb-4">
+            <h4 id="tafsir-title" class="font-black text-lg text-emerald-600">خزانة العلم</h4>
+            <button onclick="closeTafsir()" class="text-gray-300 text-2xl active:text-emerald-500"><i class="fas fa-times-circle"></i></button>
         </div>
-        <div class="max-h-[50vh] overflow-y-auto pr-2">
-            <p id="tafsir-body" class="text-gray-700 leading-[1.8] text-sm"></p>
-            <p class="text-[10px] text-gray-400 mt-6 italic">المصدر: تفسير الجلالين</p>
+        <div class="max-h-[45vh] overflow-y-auto pr-1">
+            <p id="tafsir-body" class="text-gray-700 leading-relaxed text-base text-justify"></p>
+            <p class="text-[9px] text-gray-400 mt-8 italic text-left">تفسير الجلالين • تطبيق قبة</p>
         </div>
     </div>
 
     <div id="app">
         <!-- الرئيسية -->
         <section id="page-home" class="page-container active">
-            <div class="flex justify-between items-center mb-8">
+            <div class="flex justify-between items-center mb-6">
                 <div class="flex flex-col">
-                    <span class="text-[10px] font-black text-gray-400 uppercase tracking-widest">أهلاً بك في</span>
-                    <h1 class="text-3xl font-black text-gray-800 tracking-tighter">قُـبَّـة</h1>
+                    <span class="text-[9px] font-black text-gray-400 uppercase mb-0.5 tracking-wider">أهلاً بك في</span>
+                    <h1 class="text-2xl font-black text-gray-800 tracking-tighter">قُـبَّـة</h1>
                 </div>
-                <p id="hijri-date" class="text-xs font-bold text-emerald-600 text-left"></p>
+                <p id="hijri-date" class="text-[10px] font-black text-emerald-600"></p>
             </div>
 
-            <!-- الساعة -->
-            <div class="white-card bg-gray-50 border-none flex flex-col items-center py-6 mb-8">
-                <div class="tabular-nums text-5xl font-black text-gray-800 mb-1" id="digital-clock">00:00:00</div>
-                <div class="text-[10px] text-gray-400 font-bold uppercase tracking-[4px]">توقيت مكة والكون</div>
+            <!-- الساعة المدمجة -->
+            <div class="white-card bg-gray-50 border-none flex flex-col items-center py-4 mb-6 shadow-inner">
+                <div class="tabular-nums text-4xl font-black text-gray-800" id="digital-clock">00:00:00</div>
+                <div class="text-[8px] text-gray-400 font-bold uppercase tracking-[3px] mt-1">توقيت الكون</div>
             </div>
 
             <!-- رمضان -->
-            <div class="white-card flex items-center justify-between border-emerald-100 mb-8">
-                <div class="text-emerald-600 lantern-sway"><i class="fas fa-fan text-2xl"></i></div>
-                <div class="text-center flex-1 px-4">
-                    <h3 class="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-3 tracking-[1px]">العد التنازلي لرمضان</h3>
-                    <div class="flex justify-center gap-6">
-                        <div><span class="text-2xl font-black text-gray-800 block tabular-nums" id="r-days">--</span><small class="text-[9px] text-gray-400 font-bold uppercase">يوم</small></div>
-                        <div><span class="text-2xl font-black text-gray-800 block tabular-nums" id="r-hours">--</span><small class="text-[9px] text-gray-400 font-bold uppercase">ساعة</small></div>
-                        <div><span class="text-2xl font-black text-gray-800 block tabular-nums" id="r-mins">--</span><small class="text-[9px] text-gray-400 font-bold uppercase">دقيقة</small></div>
+            <div class="white-card flex items-center justify-between border-emerald-50 mb-6">
+                <div class="text-emerald-600 lantern-sway"><i class="fas fa-fan text-xl"></i></div>
+                <div class="text-center flex-1 px-2 border-x border-gray-50">
+                    <h3 class="text-[9px] font-black text-gray-400 uppercase tracking-widest mb-2">متبقي لرمضان</h3>
+                    <div class="flex justify-center gap-4">
+                        <div><span class="text-xl font-black text-gray-800 block tabular-nums" id="r-days">--</span><small class="text-[8px] text-gray-400 font-bold">يوم</small></div>
+                        <div><span class="text-xl font-black text-gray-800 block tabular-nums" id="r-hours">--</span><small class="text-[8px] text-gray-400 font-bold">ساعة</small></div>
                     </div>
                 </div>
-                <div class="text-amber-500 lantern-sway" style="animation-delay: 0.5s;"><i class="fas fa-moon text-2xl"></i></div>
+                <div class="text-amber-500 lantern-sway" style="animation-delay: 0.5s;"><i class="fas fa-moon text-xl"></i></div>
             </div>
 
             <div class="heart-pulse" onclick="generateInspiration()"><i class="fas fa-heart"></i></div>
 
+            <!-- مواقيت الصلاة -->
             <div class="mb-8">
-                <h3 class="text-xs font-black mb-4 px-2 text-gray-500 tracking-wider">مواقيت الصلاة</h3>
-                <div id="prayer-grid" class="grid grid-cols-5 gap-2"></div>
+                <h3 class="font-black text-xs text-gray-500 mb-4 px-1 tracking-wider uppercase">مواقيت الصلاة</h3>
+                <div id="prayer-grid" class="grid grid-cols-5 gap-1.5"></div>
             </div>
 
+            <!-- التوصيات -->
             <div class="mb-8">
-                <h3 class="text-xs font-black mb-4 px-2 text-gray-500 tracking-wider">توصيات إيمانية</h3>
                 <div class="scroll-wrapper">
-                    <div class="recommendation-card"><p class="text-[10px] font-black text-emerald-600 mb-1 tracking-widest uppercase">نصيحة</p><p class="text-sm text-gray-700 font-medium leading-relaxed">قراءة سورة الملك قبل النوم هي المنجية من عذاب القبر بإذن الله.</p></div>
-                    <div class="recommendation-card"><p class="text-[10px] font-black text-emerald-600 mb-1 tracking-widest uppercase">ذكر</p><p class="text-sm text-gray-700 font-medium leading-relaxed">أكثر من الصلاة على النبي في يوم الجمعة.</p></div>
-                    <div class="recommendation-card"><p class="text-[10px] font-black text-emerald-600 mb-1 tracking-widest uppercase">عبادة</p><p class="text-sm text-gray-700 font-medium leading-relaxed">ركعتا الضحى صدقة عن كل مفاصل جسدك.</p></div>
+                    <div class="recommendation-card"><p class="text-[9px] font-black text-emerald-600 mb-1 tracking-tighter uppercase">نصيحة</p><p class="text-[11px] text-gray-700 font-bold leading-tight">سورة الملك قبل النوم تنجي من عذاب القبر بإذن الله.</p></div>
+                    <div class="recommendation-card"><p class="text-[9px] font-black text-emerald-600 mb-1 tracking-tighter uppercase">ذكر</p><p class="text-[11px] text-gray-700 font-bold leading-tight">أكثر من الاستغفار فإنه يفتح مغاليق الأبواب ويجلب الرزق.</p></div>
+                    <div class="recommendation-card"><p class="text-[9px] font-black text-emerald-600 mb-1 tracking-tighter uppercase">عبادة</p><p class="text-[11px] text-gray-700 font-bold leading-tight">ركعتا الضحى صدقة عن كل مفاصل جسدك الـ 360.</p></div>
                 </div>
             </div>
 
-            <div class="white-card relative overflow-hidden bg-emerald-50 shadow-none border-none">
-                <i class="fas fa-quote-right absolute top-4 right-4 text-emerald-200 text-4xl opacity-50"></i>
-                <p id="daily-ayah" class="quran-text text-2xl text-center leading-relaxed text-gray-800 py-4 relative z-10 italic"></p>
-                <div class="flex justify-between items-center mt-2 pt-3 relative z-10">
-                    <span id="ayah-ref" class="text-[10px] font-black text-emerald-600 uppercase"></span>
-                    <button onclick="shareContent('ayah')" class="text-emerald-300 active:text-emerald-600"><i class="fas fa-share-alt"></i></button>
+            <!-- آية اليوم -->
+            <div class="white-card bg-emerald-50/40 border-none p-6 relative overflow-hidden">
+                <i class="fas fa-quote-right absolute top-2 right-2 text-emerald-100 text-3xl opacity-50"></i>
+                <p id="daily-ayah" class="quran-text text-xl text-center leading-relaxed text-gray-800 py-2 italic font-bold z-10 relative"></p>
+                <div class="flex justify-between items-center mt-3 pt-3 border-t border-emerald-100 z-10 relative">
+                    <span id="ayah-ref" class="text-[9px] font-black text-emerald-600 uppercase tracking-widest"></span>
+                    <button onclick="shareContent('ayah')" class="text-emerald-300 active:text-emerald-600"><i class="fas fa-share-alt text-base"></i></button>
                 </div>
             </div>
         </section>
 
         <!-- المصحف -->
         <section id="page-quran" class="page-container">
-            <h2 class="text-2xl font-black mb-6 tracking-tight">المصحف الشريف</h2>
-            <div class="relative mb-6">
-                <i class="fas fa-search absolute right-5 top-1/2 -translate-y-1/2 text-gray-400"></i>
-                <input type="text" id="surah-search" placeholder="ابحث عن اسم السورة..." class="w-full h-14 pr-14 rounded-2xl bg-gray-50 border-none outline-none text-sm font-bold focus:ring-2 focus:ring-emerald-500">
+            <h2 class="text-xl font-black mb-4 text-gray-800 tracking-tight">المصحف الشريف</h2>
+            <div class="relative mb-5 group">
+                <i class="fas fa-search absolute right-4 top-1/2 -translate-y-1/2 text-gray-300 group-focus-within:text-emerald-500 transition-colors"></i>
+                <input type="text" id="surah-search" placeholder="ابحث عن السورة..." class="w-full h-12 pr-12 rounded-xl bg-gray-50 border-none outline-none text-xs font-bold focus:ring-2 focus:ring-emerald-500 transition-all">
             </div>
-            <div id="surah-list" class="grid gap-3"></div>
+            <div id="surah-list" class="grid gap-2"></div>
         </section>
 
         <!-- القارئ -->
         <section id="page-reader" class="page-container !p-0">
-            <div class="sticky top-0 bg-white border-b border-gray-100 z-50 flex items-center justify-between px-6 py-4 shadow-sm">
-                <button onclick="showPage('page-quran')" class="text-emerald-600"><i class="fas fa-chevron-right text-xl"></i></button>
-                <h3 id="reader-title" class="font-black text-lg text-center">سورة</h3>
-                <button id="view-toggle" class="text-[10px] font-bold bg-emerald-50 text-emerald-700 px-3 py-1 rounded-full uppercase tracking-tighter">آيات</button>
+            <div class="sticky top-0 bg-white border-b border-gray-50 z-50 flex items-center justify-between px-4 py-3 shadow-sm">
+                <button onclick="showPage('page-quran')" class="text-emerald-600 text-lg active:scale-90"><i class="fas fa-chevron-right"></i></button>
+                <div class="text-center">
+                    <h3 id="reader-title" class="font-black text-base text-gray-800">سورة</h3>
+                    <p class="text-[8px] text-emerald-500 font-black tracking-widest mt-0.5 uppercase">اضغط للتفسير</p>
+                </div>
+                <button id="view-toggle" class="px-3 py-1 bg-emerald-50 text-emerald-700 text-[8px] rounded-xl font-black uppercase active:scale-95 shadow-inner">آيات</button>
             </div>
-            <div id="reader-container" class="p-10 quran-text text-3xl text-center leading-[3] text-gray-800 mb-24"></div>
+            <div id="reader-container" class="p-8 quran-text text-3xl text-center leading-[2.5] text-gray-800 mb-20"></div>
         </section>
 
         <!-- الأذكار -->
         <section id="page-azkar" class="page-container">
-            <h2 class="text-2xl font-black mb-10 text-center tracking-tight">خزانة الأذكار</h2>
-            <div id="azkar-grid" class="grid grid-cols-2 gap-4">
-                <div onclick="renderAzkarList('morning')" class="white-card text-center py-10 m-0 active:scale-95 transition"><i class="fas fa-sun text-orange-400 text-4xl mb-4"></i><p class="text-xs font-black">أذكار الصباح</p></div>
-                <div onclick="renderAzkarList('evening')" class="white-card text-center py-10 m-0 active:scale-95 transition"><i class="fas fa-moon text-indigo-400 text-4xl mb-4"></i><p class="text-xs font-black">أذكار المساء</p></div>
-                <div onclick="renderAzkarList('prayer')" class="white-card text-center py-10 m-0 active:scale-95 transition"><i class="fas fa-mosque text-emerald-500 text-4xl mb-4"></i><p class="text-xs font-black">بعد الصلاة</p></div>
-                <div onclick="renderAzkarList('ruqyah')" class="white-card text-center py-10 m-0 active:scale-95 transition"><i class="fas fa-shield-heart text-red-500 text-4xl mb-4"></i><p class="text-xs font-black">الرقية الشرعية</p></div>
-                <div onclick="renderAzkarList('sleep')" class="white-card text-center py-10 m-0 active:scale-95 transition"><i class="fas fa-bed text-purple-400 text-4xl mb-4"></i><p class="text-xs font-black">أذكار النوم</p></div>
-                <div onclick="renderAzkarList('dua')" class="white-card text-center py-10 m-0 active:scale-95 transition"><i class="fas fa-hands-praying text-blue-500 text-4xl mb-4"></i><p class="text-xs font-black">أدعية نبوية</p></div>
+            <h2 class="text-xl font-black mb-6 text-center text-gray-800 tracking-widest uppercase">خزانة الأذكار</h2>
+            <div id="azkar-grid" class="grid grid-cols-2 gap-3">
+                <div onclick="renderAzkarList('morning')" class="white-card text-center py-6 m-0 active:scale-95 transition-all"><i class="fas fa-sun text-orange-400 text-3xl mb-3 shadow-sm"></i><p class="text-[10px] font-black">أذكار الصباح</p></div>
+                <div onclick="renderAzkarList('evening')" class="white-card text-center py-6 m-0 active:scale-95 transition-all"><i class="fas fa-moon text-indigo-400 text-3xl mb-3 shadow-sm"></i><p class="text-[10px] font-black">أذكار المساء</p></div>
+                <div onclick="renderAzkarList('prayer')" class="white-card text-center py-6 m-0 active:scale-95 transition-all"><i class="fas fa-mosque text-emerald-500 text-3xl mb-3 shadow-sm"></i><p class="text-[10px] font-black">بعد الصلاة</p></div>
+                <div onclick="renderAzkarList('ruqyah')" class="white-card text-center py-6 m-0 active:scale-95 transition-all"><i class="fas fa-shield-heart text-red-500 text-3xl mb-3 shadow-sm"></i><p class="text-[10px] font-black">الرقية الشرعية</p></div>
+                <div onclick="renderAzkarList('sleep')" class="white-card text-center py-6 m-0 active:scale-95 transition-all"><i class="fas fa-bed text-purple-400 text-3xl mb-3 shadow-sm"></i><p class="text-[10px] font-black">أذكار النوم</p></div>
+                <div onclick="renderAzkarList('dua')" class="white-card text-center py-6 m-0 active:scale-95 transition-all"><i class="fas fa-hands-praying text-blue-500 text-3xl mb-3 shadow-sm"></i><p class="text-[10px] font-black">أدعية نبوية</p></div>
             </div>
             <div id="azkar-detail" class="hidden">
-                <div class="sticky top-0 bg-white py-4 mb-4 border-b border-gray-50 flex items-center gap-4">
-                    <button onclick="backToAzkar()" class="text-emerald-600 font-bold text-sm"><i class="fas fa-arrow-right"></i></button>
-                    <span class="font-black text-gray-400 uppercase tracking-widest text-[10px]">العودة</span>
+                <div class="sticky top-0 bg-white py-3 mb-4 border-b border-gray-50 flex items-center gap-3 z-10">
+                    <button onclick="backToAzkar()" class="w-8 h-8 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center active:scale-90"><i class="fas fa-arrow-right"></i></button>
+                    <span class="font-black text-gray-400 uppercase tracking-widest text-[9px]">الرجوع للخزانة</span>
                 </div>
-                <div id="zikr-items-container" class="space-y-4"></div>
+                <div id="zikr-items-container" class="space-y-3"></div>
             </div>
         </section>
 
         <!-- الإذاعة -->
         <section id="page-radio" class="page-container">
-            <h2 class="text-2xl font-black mb-8 tracking-tight">الإذاعات الإسلامية</h2>
-            <div class="white-card bg-emerald-600 text-white border-none text-center py-12 relative overflow-hidden shadow-xl">
-                <i id="radio-pulse" class="fas fa-broadcast-tower text-4xl mb-4 block"></i>
-                <h3 id="radio-station-name" class="text-xl font-black tracking-wide">اختر محطة للبث</h3>
-                <div class="flex justify-center gap-6 mt-8 z-10 relative">
-                    <button onclick="toggleAudio()" id="radio-play-btn" class="w-16 h-16 bg-white text-emerald-700 rounded-full flex items-center justify-center shadow-lg active:scale-90 transition-all"><i class="fas fa-play text-xl ml-1"></i></button>
-                    <button onclick="stopAudio()" class="w-16 h-16 bg-emerald-500 text-white rounded-full flex items-center justify-center shadow-md active:scale-90 transition-all"><i class="fas fa-stop"></i></button>
+            <h2 class="text-xl font-black mb-6 text-gray-800 text-center tracking-tight">الإذاعة المباشرة</h2>
+            <div class="white-card bg-emerald-600 text-white border-none text-center py-8 relative overflow-hidden shadow-lg">
+                <i id="radio-pulse" class="fas fa-broadcast-tower text-3xl mb-3 block"></i>
+                <h3 id="radio-station-name" class="text-base font-black">اختر محطة</h3>
+                <div class="flex justify-center gap-6 mt-6 z-10 relative">
+                    <button onclick="toggleAudio()" id="radio-play-btn" class="w-12 h-12 bg-white text-emerald-700 rounded-full flex items-center justify-center shadow-lg active:scale-90 transition-all"><i class="fas fa-play text-xl ml-1"></i></button>
+                    <button onclick="stopAudio()" class="w-12 h-12 bg-emerald-500 text-white rounded-full flex items-center justify-center shadow-md active:scale-90 transition-all"><i class="fas fa-stop text-lg"></i></button>
                 </div>
                 <audio id="global-player"></audio>
-                <i class="fas fa-radio absolute -right-6 -bottom-6 text-9xl opacity-10"></i>
+                <i class="fas fa-kaaba absolute -right-8 -bottom-8 text-8xl opacity-10"></i>
             </div>
-            <div id="radio-list" class="grid gap-3 mt-6"></div>
+            <div id="radio-list" class="grid gap-2 mt-6"></div>
         </section>
 
         <!-- المطور -->
         <section id="page-settings" class="page-container text-center">
-            <h2 class="text-2xl font-black mb-10 tracking-tight">نبذة عن المطور</h2>
-            <div class="white-card py-12 shadow-sm border-emerald-50 bg-gray-50">
-                <div class="w-28 h-28 bg-white border border-emerald-100 rounded-[40px] flex items-center justify-center mx-auto mb-6 text-emerald-600 font-black text-5xl shadow-sm transform hover:scale-105 transition-transform">MZ</div>
-                <h4 class="font-black text-2xl text-gray-800">محمد أحمد زايد</h4>
-                <p class="text-[10px] text-gray-400 font-bold mb-10 uppercase tracking-[4px] mt-2">Full-Stack Developer & UI/UX</p>
+            <h2 class="text-xl font-black mb-8 text-gray-800 tracking-tight">المطور</h2>
+            <div class="white-card py-10 bg-gray-50/50 border-emerald-50">
+                <div class="w-24 h-24 bg-white border-2 border-emerald-100 rounded-[35px] flex items-center justify-center mx-auto mb-4 text-emerald-600 font-black text-4xl shadow-sm transform hover:rotate-3 transition-transform">MZ</div>
+                <h4 class="font-black text-xl text-gray-800">محمد أحمد زايد</h4>
+                <p class="text-[9px] text-gray-400 font-bold mb-8 uppercase tracking-[3px] mt-1">Full-Stack Developer</p>
                 
-                <div class="flex justify-center gap-6 mt-8">
-                    <a href="https://www.linkedin.com/in/mohamed-zayed-14357b1bb" target="_blank" class="w-14 h-14 flex items-center justify-center bg-blue-50 text-blue-600 rounded-2xl shadow-sm hover:shadow-md transition-all"><i class="fab fa-linkedin-in text-xl"></i></a>
-                    <a href="https://www.instagram.com/mohamed_zayed20002" target="_blank" class="w-14 h-14 flex items-center justify-center bg-pink-50 text-pink-600 rounded-2xl shadow-sm hover:shadow-md transition-all"><i class="fab fa-instagram text-xl"></i></a>
-                    <a href="https://mohamedz22q.sarhne.com" target="_blank" class="w-14 h-14 flex items-center justify-center bg-emerald-50 text-emerald-600 rounded-2xl shadow-sm hover:shadow-md transition-all font-black text-xl italic">ص</a>
+                <div class="flex justify-center gap-5 mt-6">
+                    <a href="https://www.linkedin.com/in/mohamed-zayed-14357b1bb" target="_blank" class="w-11 h-11 flex items-center justify-center bg-white text-blue-600 rounded-2xl shadow-sm active:scale-90 transition-all"><i class="fab fa-linkedin-in text-lg"></i></a>
+                    <a href="https://www.instagram.com/mohamed_zayed20002" target="_blank" class="w-11 h-11 flex items-center justify-center bg-white text-pink-600 rounded-2xl shadow-sm active:scale-90 transition-all"><i class="fab fa-instagram text-lg"></i></a>
+                    <a href="https://mohamedz22q.sarhne.com" target="_blank" class="w-11 h-11 flex items-center justify-center bg-white text-emerald-600 rounded-2xl shadow-sm font-black italic active:scale-90 transition-all">ص</a>
                 </div>
             </div>
             
-            <div class="white-card text-right">
-                <label class="text-[10px] font-black text-gray-400 uppercase block mb-4 tracking-widest">تخصيص القراءة</label>
-                <p class="text-xs font-bold mb-4">حجم خط المصحف الشريف</p>
-                <input type="range" id="font-size-slider" min="24" max="64" value="34" class="w-full h-1.5 accent-emerald-600 cursor-pointer">
-                <div class="flex justify-between mt-2 text-[9px] font-black text-gray-300"><span>صغير</span><span>كبير جداً</span></div>
+            <div class="white-card text-right py-6">
+                <label class="text-[9px] font-black text-gray-400 uppercase block mb-4 tracking-[2px]">تخصيص القراءة</label>
+                <div class="flex justify-between mb-3">
+                    <p class="text-[11px] font-bold">حجم خط المصحف</p>
+                    <span id="font-size-val" class="text-[10px] font-black text-emerald-600">32px</span>
+                </div>
+                <input type="range" id="font-size-slider" min="20" max="60" value="32" class="w-full h-1.5 accent-emerald-600 cursor-pointer bg-gray-100 rounded-lg appearance-none">
             </div>
 
-            <button onclick="shareFullApp()" class="w-full white-card py-6 bg-emerald-600 text-white border-none font-bold active:scale-95 shadow-xl flex items-center justify-center gap-3 mt-6">
-                <i class="fas fa-share-nodes text-lg"></i> مشاركة التطبيق للصدقة
+            <button onclick="shareFullApp()" class="w-full white-card py-5 bg-emerald-600 text-white border-none font-bold active:scale-95 shadow-xl flex items-center justify-center gap-3">
+                <i class="fas fa-share-nodes text-base"></i> مشاركة التطبيق
             </button>
         </section>
 
-        <!-- شريط التنقل السفلي -->
+        <!-- التنقل -->
         <nav class="nav-bar">
-            <div onclick="showPage('page-home')" class="nav-btn active" id="nav-page-home"><i class="fas fa-home-alt text-xl mb-1.5"></i>الرئيسية</div>
-            <div onclick="showPage('page-quran')" class="nav-btn" id="nav-page-quran"><i class="fas fa-book-quran text-xl mb-1.5"></i>المصحف</div>
-            <div onclick="showPage('page-azkar')" class="nav-btn" id="nav-page-azkar"><i class="fas fa-hands-praying text-xl mb-1.5"></i>الأذكار</div>
-            <div onclick="showPage('page-radio')" class="nav-btn" id="nav-page-radio"><i class="fas fa-broadcast-tower text-xl mb-1.5"></i>الإذاعة</div>
-            <div onclick="showPage('page-settings')" class="nav-btn" id="nav-page-settings"><i class="fas fa-user-tie text-xl mb-1.5"></i>المطور</div>
+            <div onclick="showPage('page-home')" class="nav-btn active" id="nav-page-home"><i class="fas fa-home-alt text-xl mb-1"></i>الرئيسية</div>
+            <div onclick="showPage('page-quran')" class="nav-btn" id="nav-page-quran"><i class="fas fa-book-quran text-xl mb-1"></i>المصحف</div>
+            <div onclick="showPage('page-azkar')" class="nav-btn" id="nav-page-azkar"><i class="fas fa-hands-praying text-xl mb-1"></i>الأذكار</div>
+            <div onclick="showPage('page-radio')" class="nav-btn" id="nav-page-radio"><i class="fas fa-broadcast-tower text-xl mb-1"></i>الإذاعة</div>
+            <div onclick="showPage('page-settings')" class="nav-btn" id="nav-page-settings"><i class="fas fa-user-gear text-xl mb-1"></i>المطور</div>
         </nav>
     </div>
 
     <script>
-        // --- بيانات المحتوى الكامل ---
+        // --- التقنيات المتقدمة (Offline & PWA) ---
+        if ('serviceWorker' in navigator) {
+            const swCode = `const CACHE_NAME='qubba-v2'; self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE_NAME).then(c=>c.addAll(['/','/index.html'])))); self.addEventListener('fetch',e=>e.respondWith(caches.match(e.request).then(r=>r||fetch(e.request))));`;
+            const blob = new Blob([swCode], { type: 'application/javascript' });
+            navigator.serviceWorker.register(URL.createObjectURL(blob)).catch(console.error);
+        }
+
         const azkarDB = {
-            morning: { n: "أذكار الصباح", data: [
-                {t: "آية الكرسي", c: 1}, {t: "سورة الإخلاص", c: 3}, {t: "سورة الفلق", c: 3}, {t: "سورة الناس", c: 3},
-                {t: "أصبحنا وأصبح الملك لله والحمد لله، لا إله إلا الله وحده لا شريك له", c: 1},
-                {t: "يا حي يا قيوم برحمتك أستغيث أصلح لي شأني كله ولا تكلني إلى نفسي طرفة عين", c: 1},
-                {t: "رضيت بالله رباً وبالإسلام ديناً وبمحمد صلى الله عليه وسلم نبياً", c: 3},
-                {t: "حسبي الله لا إله إلا هو عليه توكلت وهو رب العرش العظيم", c: 7},
-                {t: "اللهم بك أصبحنا وبك أمسينا وبك نحيا وبك نموت وإليك النشور", c: 1},
-                {t: "سبحان الله وبحمده: عدد خلقه، ورضا نفسه، وزنة عرشه، ومداد كلماته", c: 100}
-            ]},
-            evening: { n: "أذكار المساء", data: [
-                {t: "آية الكرسي والمُعوذات", c: 3},
-                {t: "أمسينا وأمسى الملك لله والحمد لله، لا إله إلا الله وحده لا شريك له", c: 1},
-                {t: "باسم الله الذي لا يضر مع اسمه شيء في الأرض ولا في السماء وهو السميع العليم", c: 3},
-                {t: "أعوذ بكلمات الله التامات من شر ما خلق", c: 3},
-                {t: "اللهم بك أمسينا وبك أصبحنا وبك نحيا وبك نموت وإليك المصير", c: 1},
-                {t: "أمسيتُ أُشهدك وأُشهد حملة عرشك وملائكتك أنك أنت الله لا إله إلا أنت", c: 4}
-            ]},
-            prayer: { n: "بعد الصلاة", data: [
-                {t: "أستغفر الله (3 مرات)", c: 3},
-                {t: "اللهم أنت السلام ومنك السلام تباركت يا ذا الجلال والإكرام", c: 1},
-                {t: "سبحان الله (33 مرة)", c: 33}, {t: "الحمد لله (33 مرة)", c: 33}, {t: "الله أكبر (33 مرة)", c: 33},
-                {t: "لا إله إلا الله وحده لا شريك له، له الملك وله الحمد وهو على كل شيء قدير", c: 1}
-            ]},
-            ruqyah: { n: "الرقية الشرعية", data: [
-                {t: "سورة الفاتحة (تُكرر سبعاً)", c: 7},
-                {t: "آية الكرسي", c: 1},
-                {t: "أواخر سورة البقرة (آمن الرسول...)", c: 1},
-                {t: "المعوذات (تُكرر ثلاثاً)", c: 3},
-                {t: "أعوذ بكلمات الله التامة من كل شيطان وهامة ومن كل عين لامة", c: 3},
-                {t: "بسم الله أرقيك من كل شيء يؤذيك ومن شر كل نفس أو عين حاسد", c: 3},
-                {t: "اللهم رب الناس أذهب البأس اشفِ وأنت الشافي لا شفاء إلا شفاؤك", c: 3}
-            ]},
-            sleep: { n: "أذكار النوم", data: [
-                {t: "باسمك ربي وضعت جنبي وبك أرفعه، إن أمسكت نفسي فارحمها وإن أرسلتها فاحفظها", c: 1},
-                {t: "سورة الملك (المنجية من عذاب القبر)", c: 1},
-                {t: "اللهم قني عذابك يوم تبعث عبادك", c: 3},
-                {t: "باسمك اللهم أموت وأحيا", c: 1}
-            ]},
-            dua: { n: "أدعية نبوية", data: [
-                {t: "اللهم إنك عفو تحب العفو فاعفُ عني", c: 1},
-                {t: "ربنا آتنا في الدنيا حسنة وفي الآخرة حسنة وقنا عذاب النار", c: 1},
-                {t: "يا مقلب القلوب ثبت قلبي على دينك", c: 1},
-                {t: "اللهم إني أسألك الهدى والتقى والعفاف والغنى", c: 1}
-            ]}
+            morning: { n: "أذكار الصباح", data: [{t: "آية الكرسي", c: 1}, {t: "سورة الإخلاص", c: 3}, {t: "سورة الفلق", c: 3}, {t: "سورة الناس", c: 3}, {t: "أصبحنا وأصبح الملك لله والحمد لله", c: 1}, {t: "يا حي يا قيوم برحمتك أستغيث", c: 1}, {t: "رضيت بالله رباً وبالإسلام ديناً", c: 3}, {t: "سبحان الله وبحمده (100 مرة)", c: 100}] },
+            evening: { n: "أذكار المساء", data: [{t: "آية الكرسي والمُعوذات", c: 3}, {t: "أمسينا وأمسى الملك لله", c: 1}, {t: "باسم الله الذي لا يضر مع اسمه شيء", c: 3}, {t: "أعوذ بكلمات الله التامات", c: 3}, {t: "اللهم بك أمسينا وبك أصبحنا", c: 1}] },
+            prayer: { n: "بعد الصلاة", data: [{t: "أستغفر الله (3 مرات)", c: 3}, {t: "اللهم أنت السلام ومنك السلام", c: 1}, {t: "سبحان الله (33 مرة)", c: 33}, {t: "الْحَمْدُ لله (33 مرة)", c: 33}, {t: "الله أكبر (33 مرة)", c: 33}, {t: "لا إله إلا الله وحده لا شريك له", c: 1}] },
+            ruqyah: { n: "الرقية الشرعية", data: [{t: "سورة الفاتحة (7 مرات)", c: 7}, {t: "آية الكرسي", c: 1}, {t: "المعوذات (3 مرات)", c: 3}, {t: "أعوذ بكلمات الله التامة من كل شيطان", c: 3}, {t: "بسم الله أرقيك من كل شيء يؤذيك", c: 3}] },
+            sleep: { n: "أذكار النوم", data: [{t: "باسمك ربي وضعت جنبي وبك أرفعه", c: 1}, {t: "سورة الملك (المنجية)", c: 1}, {t: "اللهم قني عذابك يوم تبعث عبادك", c: 3}, {t: "باسمك اللهم أموت وأحيا", c: 1}] },
+            dua: { n: "أدعية نبوية", data: [{t: "اللهم إنك عفو تحب العفو فاعفُ عني", c: 1}, {t: "ربنا آتنا في الدنيا حسنة وفي الآخرة حسنة", c: 1}, {t: "يا مقلب القلوب ثبت قلبي على دينك", c: 1}, {t: "اللهم إني أسألك الهدى والتقى والعفاف", c: 1}] }
         };
 
         const radioStations = [
-            {n: "إذاعة القرآن الكريم - القاهرة", u: "https://n02.radiojar.com/8s7u7ca8ta8uv"},
-            {n: "إذاعة القرآن الكريم - السعودية", u: "https://stream.radiojar.com/4wqwt9a796quv"},
+            {n: "إذاعة القرآن - القاهرة", u: "https://n02.radiojar.com/8s7u7ca8ta8uv"},
+            {n: "إذاعة القرآن - السعودية", u: "https://stream.radiojar.com/4wqwt9a796quv"},
             {n: "إذاعة التلاوات الخاشعة", u: "https://qurango.net/radio/mix"},
             {n: "الشيخ المنشاوي (مرتل)", u: "https://qurango.net/radio/minshawi"},
             {n: "الشيخ عبد الباسط (مجود)", u: "https://qurango.net/radio/abdulbasit_mojawwad"},
-            {n: "الشيخ ماهر المعيقلي", u: "https://qurango.net/radio/maher"},
-            {n: "الشيخ مشاري العفاسي", u: "https://qurango.net/radio/mishary_alafasy"},
-            {n: "الشيخ سعود الشريم", u: "https://qurango.net/radio/shuraym"}
+            {n: "الشيخ ماهر المعيقلي", u: "https://qurango.net/radio/maher"}
         ];
 
-        const inspirations = [
-            "﴿وَبَشِّرِ الصَّابِرِينَ﴾", "«أَحَبُّ الْأَعْمَالِ إِلَى اللهِ أَدْمَمُهَا وَإِنْ قَلَّ»",
-            "﴿إِنَّ مَعَ الْعُسْرِ يُسْرًا﴾", "﴿وَلَسَوْفَ يُعْطِيكَ رَبُّكَ فَتَرْضَىٰ﴾",
-            "﴿لَا تَدْرِي لَعَلَّ اللَّهَ يُحْدِثُ بَعْدَ ذَلِكَ أَمْرًا﴾", "﴿أَلَا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ﴾"
-        ];
+        const inspirations = ["﴿وَبَشِّرِ الصَّابِرِينَ﴾", "«أَحَبُّ الْأَعْمَالِ إِلَى اللهِ أَدْوَمُهَا وَإِنْ قَلَّ»", "﴿إِنَّ مَعَ الْعُسْرِ يُسْرًا﴾", "﴿وَلَسَوْفَ يُعْطِيكَ رَبُّكَ فَتَرْضَىٰ﴾", "﴿أَلَا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ﴾"];
 
-        // --- إدارة الحالة ---
         let currentAyahs = [], surahs = [], viewMode = 'page', audio = document.getElementById('global-player');
 
         window.onload = () => {
-            updateClock(); setInterval(updateClock, 1000);
-            updateRamadanTimer(); fetchSurahs(); loadRandomAyah(); fetchPrayerTimes(); renderRadioList();
-            setTimeout(() => {
-                const screen = document.getElementById('loading-screen');
-                if(screen) { screen.style.opacity = '0'; setTimeout(() => screen.remove(), 400); }
-            }, 1800);
+            updateClock(); setInterval(updateClock, 1000); updateRamadanTimer(); fetchSurahs(); loadRandomAyah(); fetchPrayerTimes(); renderRadioList();
+            setTimeout(() => { const s = document.getElementById('loading-screen'); if(s){s.style.opacity='0'; setTimeout(()=>s.remove(),400);} }, 2000);
         };
 
         function showPage(id) {
             document.querySelectorAll('.page-container').forEach(p => p.classList.remove('active'));
-            const target = document.getElementById(id);
-            if(target) target.classList.add('active');
+            const t = document.getElementById(id); if(t) t.classList.add('active');
             document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-            const btnId = 'nav-' + (id === 'page-reader' ? 'page-quran' : id);
-            const activeBtn = document.getElementById(btnId);
-            if(activeBtn) activeBtn.classList.add('active');
+            const btn = document.getElementById('nav-' + (id === 'page-reader' ? 'page-quran' : id)); if(btn) btn.classList.add('active');
             window.scrollTo({top:0, behavior:'smooth'});
         }
 
         function updateClock() {
-            const now = new Date();
-            document.getElementById('digital-clock').innerText = now.toLocaleTimeString('ar-EG', {hour:'2-digit', minute:'2-digit', second:'2-digit', hour12:false});
-            document.getElementById('hijri-date').innerText = now.toLocaleDateString('ar-SA', {weekday:'long', day:'numeric', month:'long'});
+            const n = new Date();
+            document.getElementById('digital-clock').innerText = n.toLocaleTimeString('ar-EG', {hour:'2-digit', minute:'2-digit', second:'2-digit', hour12:false});
+            document.getElementById('hijri-date').innerText = n.toLocaleDateString('ar-SA', {weekday:'long', day:'numeric', month:'long'});
         }
 
         function updateRamadanTimer() {
-            const ramadanDate = new Date("March 1, 2026 00:00:00").getTime();
-            const diff = ramadanDate - new Date().getTime();
-            if(diff > 0) {
-                document.getElementById('r-days').innerText = Math.floor(diff / 86400000);
-                document.getElementById('r-hours').innerText = Math.floor((diff % 86400000) / 3600000);
-                document.getElementById('r-mins').innerText = Math.floor((diff % 3600000) / 60000);
-            }
+            const d = new Date("March 1, 2026 00:00:00").getTime() - new Date().getTime();
+            if(d > 0) { document.getElementById('r-days').innerText = Math.floor(d / 86400000); document.getElementById('r-hours').innerText = Math.floor((d % 86400000) / 3600000); }
         }
 
-        function generateInspiration() {
-            document.getElementById('inspiration-text').innerText = inspirations[Math.floor(Math.random() * inspirations.length)];
-            document.getElementById('inspiration-modal').classList.add('active');
-        }
+        function generateInspiration() { document.getElementById('inspiration-text').innerText = inspirations[Math.floor(Math.random()*inspirations.length)]; document.getElementById('inspiration-modal').classList.add('active'); }
 
         async function fetchSurahs() {
-            try {
-                const res = await fetch('https://api.alquran.cloud/v1/surah');
-                const data = await res.json();
-                surahs = data.data; renderSurahList(surahs);
-            } catch(e) {}
+            const c = localStorage.getItem('qubba_list'); if(c){surahs=JSON.parse(c); renderSurahList(surahs);}
+            try { const r = await fetch('https://api.alquran.cloud/v1/surah'); const d = await r.json(); surahs = d.data; localStorage.setItem('qubba_list', JSON.stringify(surahs)); renderSurahList(surahs); } catch(e){}
         }
 
-        function renderSurahList(list) {
-            document.getElementById('surah-list').innerHTML = list.map(s => `
-                <div onclick="openSurah(${s.number}, '${s.name}')" class="white-card flex items-center justify-between p-5 cursor-pointer active:scale-95 transition-all">
-                    <div class="flex items-center gap-4">
-                        <div class="w-11 h-11 bg-gray-50 text-emerald-600 rounded-xl flex items-center justify-center font-black text-xs shadow-sm">${s.number}</div>
-                        <h4 class="font-black text-sm text-gray-800">${s.name}</h4>
-                    </div>
-                    <span class="quran-text text-2xl text-emerald-600">${s.name}</span>
-                </div>
-            `).join('');
+        function renderSurahList(l) {
+            document.getElementById('surah-list').innerHTML = l.map(s => `<div onclick="openSurah(${s.number}, '${s.name}')" class="white-card flex items-center justify-between p-4 cursor-pointer active:scale-95 transition-all shadow-sm"><div class="flex items-center gap-4"><div class="w-10 h-10 bg-gray-50 text-emerald-600 rounded-lg flex items-center justify-center font-black text-xs shadow-inner">${s.number}</div><h4 class="font-black text-xs text-gray-800">${s.name}</h4></div><span class="quran-text text-xl text-emerald-600">${s.name}</span></div>`).join('');
         }
 
-        async function openSurah(id, name) {
-            showPage('page-reader');
-            document.getElementById('reader-title').innerText = name;
-            const cont = document.getElementById('reader-container');
-            cont.innerHTML = `<div class="py-20 text-emerald-600"><i class="fas fa-spinner fa-spin text-3xl"></i></div>`;
-            try {
-                const res = await fetch(`https://api.alquran.cloud/v1/surah/${id}`);
-                const data = await res.json(); currentAyahs = data.data.ayahs; renderReader();
-            } catch(e) { cont.innerText = "تعذر الاتصال بالمصحف"; }
+        async function openSurah(id, n) {
+            showPage('page-reader'); document.getElementById('reader-title').innerText = n; const c = document.getElementById('reader-container'); c.innerHTML = `<div class="py-10 text-emerald-600"><i class="fas fa-spinner fa-spin text-2xl"></i></div>`;
+            try { const r = await fetch(`https://api.alquran.cloud/v1/surah/${id}`); const d = await r.json(); currentAyahs = d.data.ayahs; renderReader(); } catch(e){ c.innerText = "تعذر الاتصال"; }
         }
 
         function renderReader() {
-            const cont = document.getElementById('reader-container');
-            cont.style.fontSize = document.getElementById('font-size-slider').value + 'px';
-            if(viewMode === 'page') {
-                cont.innerHTML = `<div class="mb-14 text-emerald-600 font-bold text-4xl">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>` +
-                    currentAyahs.map(a => `<span onclick="showTafsir(${a.number}, ${a.numberInSurah})" class="cursor-pointer hover:bg-emerald-50 px-1 rounded-lg transition-colors duration-200">${a.text} <span class="text-emerald-500 text-[0.6em] mx-1">﴿${a.numberInSurah}﴾</span></span>`).join(' ');
-            } else {
-                cont.innerHTML = currentAyahs.map(a => `<div class="white-card p-8 mb-4 text-right active:bg-gray-50 transition" onclick="showTafsir(${a.number}, ${a.numberInSurah})"><p class="leading-relaxed">${a.text}</p><div class="flex justify-between items-center mt-6 text-[10px] text-emerald-600 font-black tracking-widest uppercase"><span>آية ${a.numberInSurah}</span><span>خزانة العلم</span></div></div>`).join('');
-            }
+            const c = document.getElementById('reader-container'); const s = document.getElementById('font-size-slider').value; c.style.fontSize = s + 'px'; document.getElementById('font-size-val').innerText = s + 'px';
+            if(viewMode === 'page') { c.innerHTML = `<div class="mb-10 text-emerald-600 font-bold text-3xl">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>` + currentAyahs.map(a => `<span onclick="showTafsir(${a.number}, ${a.numberInSurah})" class="cursor-pointer hover:bg-emerald-50 px-1 rounded-lg transition-all">${a.text} <span class="text-emerald-500 text-[0.6em] mx-1">﴿${a.numberInSurah}﴾</span></span>`).join(' '); }
+            else { c.innerHTML = currentAyahs.map(a => `<div class="white-card p-6 mb-4 text-right active:bg-gray-50 transition-all border-none shadow-md" onclick="showTafsir(${a.number}, ${a.numberInSurah})"><p class="leading-relaxed text-base font-bold text-gray-900">${a.text}</p><div class="flex justify-between items-center text-[9px] text-emerald-600 font-black tracking-widest uppercase border-t pt-4 mt-4"><span>آية ${a.numberInSurah}</span><span>تفسير</span></div></div>`).join(''); }
         }
 
-        async function showTafsir(id, localId) {
-            const sheet = document.getElementById('tafsir-sheet');
-            document.getElementById('tafsir-title').innerText = `تفسير الآية (${localId})`;
-            document.getElementById('tafsir-body').innerText = "جاري فتح خزانة التفسير...";
-            sheet.classList.add('active');
-            try {
-                const res = await fetch(`https://api.alquran.cloud/v1/ayah/${id}/ar.jalalayn`);
-                const data = await res.json();
-                document.getElementById('tafsir-body').innerText = data.data.text;
-            } catch(e) { document.getElementById('tafsir-body').innerText = "حدث خطأ أثناء جلب التفسير."; }
+        async function showTafsir(id, l) {
+            const s = document.getElementById('tafsir-sheet'); document.getElementById('tafsir-title').innerText = `تفسير (${l})`; document.getElementById('tafsir-body').innerText = "جاري التحميل..."; s.classList.add('active');
+            try { const r = await fetch(`https://api.alquran.cloud/v1/ayah/${id}/ar.jalalayn`); const d = await r.json(); document.getElementById('tafsir-body').innerText = d.data.text; } catch(e){ document.getElementById('tafsir-body').innerText = "حدث خطأ."; }
         }
 
         function closeTafsir() { document.getElementById('tafsir-sheet').classList.remove('active'); }
 
-        function renderAzkarList(key) {
-            document.getElementById('azkar-grid').classList.add('hidden');
-            const cont = document.getElementById('azkar-detail');
-            cont.classList.remove('hidden');
-            document.getElementById('zikr-items-container').innerHTML = azkarDB[key].data.map(z => `
-                <div class="white-card text-center" onclick="let v=this.querySelector('.cv'); if(parseInt(v.innerText)>0) v.innerText=parseInt(v.innerText)-1">
-                    <p class="quran-text text-2xl mb-5 text-gray-800 leading-relaxed">${z.t}</p>
-                    <div class="flex justify-between items-center bg-gray-50 p-4 rounded-2xl shadow-inner border border-white">
-                        <span class="text-[10px] font-black text-gray-400 uppercase tracking-widest">المتبقي</span>
-                        <div class="cv w-12 h-12 bg-emerald-600 text-white rounded-xl flex items-center justify-center font-bold shadow-lg text-lg tabular-nums">${z.c}</div>
-                    </div>
-                </div>
-            `).join('');
+        function renderAzkarList(k) {
+            document.getElementById('azkar-grid').classList.add('hidden'); document.getElementById('azkar-detail').classList.remove('hidden');
+            document.getElementById('zikr-items-container').innerHTML = azkarDB[k].data.map(z => `<div class="white-card text-center shadow-md border-none" onclick="let v=this.querySelector('.cv'); if(parseInt(v.innerText)>0) v.innerText=parseInt(v.innerText)-1"><p class="quran-text text-xl mb-5 text-gray-800 leading-relaxed font-bold">${z.t}</p><div class="flex justify-between items-center bg-emerald-50 p-4 rounded-3xl shadow-inner"><span class="text-[10px] font-black text-emerald-600 uppercase tracking-widest">المتبقي</span><div class="cv w-12 h-12 bg-emerald-600 text-white rounded-2xl flex items-center justify-center font-bold shadow-lg text-lg tabular-nums">${z.c}</div></div></div>`).join('');
             window.scrollTo({top:0, behavior:'smooth'});
         }
 
         function backToAzkar() { document.getElementById('azkar-grid').classList.remove('hidden'); document.getElementById('azkar-detail').classList.add('hidden'); }
 
         function renderRadioList() {
-            document.getElementById('radio-list').innerHTML = radioStations.map(s => `
-                <div onclick="setRadio('${s.u}', '${s.n}')" class="white-card flex justify-between items-center p-5 cursor-pointer active:bg-gray-50 transition border-transparent hover:border-emerald-100">
-                    <div class="flex items-center gap-3"><i class="fas fa-play text-xs text-emerald-500"></i><span class="font-bold text-sm text-gray-700">${s.n}</span></div>
-                    <i class="fas fa-circle-play text-2xl text-emerald-100"></i>
-                </div>
-            `).join('');
+            document.getElementById('radio-list').innerHTML = radioStations.map(s => `<div onclick="setRadio('${s.u}', '${s.n}')" class="white-card flex justify-between items-center p-5 cursor-pointer active:bg-gray-50 transition border-transparent shadow-sm hover:shadow-md"><div class="flex items-center gap-4"><i class="fas fa-play text-xs text-emerald-500"></i><span class="font-bold text-sm text-gray-800">${s.n}</span></div><i class="fas fa-circle-play text-2xl text-emerald-100"></i></div>`).join('');
         }
         function setRadio(u, n) { audio.src = u; document.getElementById('radio-station-name').innerText = n; toggleAudio(true); }
-        function toggleAudio(force=false) { 
-            if(force || audio.paused) { audio.play(); document.getElementById('radio-play-btn').innerHTML = '<i class="fas fa-pause"></i>'; document.getElementById('radio-pulse').classList.add('animate-pulse'); } 
-            else { audio.pause(); document.getElementById('radio-play-btn').innerHTML = '<i class="fas fa-play"></i>'; document.getElementById('radio-pulse').classList.remove('animate-pulse'); } 
-        }
-        function stopAudio() { audio.pause(); audio.currentTime = 0; document.getElementById('radio-play-btn').innerHTML = '<i class="fas fa-play ml-1"></i>'; document.getElementById('radio-pulse').classList.remove('animate-pulse'); }
+        function toggleAudio(f=false) { if(f || audio.paused) { audio.play(); document.getElementById('radio-play-btn').innerHTML = '<i class="fas fa-pause"></i>'; document.getElementById('radio-pulse').classList.add('animate-pulse'); } else { audio.pause(); document.getElementById('radio-play-btn').innerHTML = '<i class="fas fa-play"></i>'; document.getElementById('radio-pulse').classList.remove('animate-pulse'); } }
+        function stopAudio() { audio.pause(); audio.currentTime = 0; document.getElementById('radio-play-btn').innerHTML = '<i class="fas fa-play"></i>'; document.getElementById('radio-pulse').classList.remove('animate-pulse'); }
 
         async function fetchPrayerTimes() {
-            try {
-                const res = await fetch('https://api.aladhan.com/v1/timingsByCity?city=Cairo&country=Egypt&method=5');
-                const data = await res.json(); const t = data.data.timings;
-                const prayers = {Fajr:'الفجر', Dhuhr:'الظهر', Asr:'العصر', Maghrib:'المغرب', Isha:'العشاء'};
-                document.getElementById('prayer-grid').innerHTML = Object.entries(prayers).map(([k,v]) => `<div class="white-card p-3 text-center border-none bg-gray-50 shadow-sm m-0"><p class="text-[8px] font-black text-gray-400 mb-1 uppercase tracking-tighter">${v}</p><p class="text-xs font-black text-gray-800 tabular-nums">${t[k]}</p></div>`).join('');
-            } catch(e) {}
+            try { const r = await fetch('https://api.aladhan.com/v1/timingsByCity?city=Cairo&country=Egypt&method=5'); const d = await r.json(); const t = d.data.timings; const p = {Fajr:'الفجر', Dhuhr:'الظهر', Asr:'العصر', Maghrib:'المغرب', Isha:'العشاء'}; document.getElementById('prayer-grid').innerHTML = Object.entries(p).map(([k,v]) => `<div class="white-card p-2 text-center border-none bg-gray-50 shadow-sm m-0"><p class="text-[7px] font-black text-gray-400 mb-1 uppercase tracking-tighter">${v}</p><p class="text-[10px] font-black text-gray-800 tabular-nums">${t[k]}</p></div>`).join(''); } catch(e){}
         }
 
         async function loadRandomAyah() {
-            try {
-                const res = await fetch(`https://api.alquran.cloud/v1/ayah/${Math.floor(Math.random()*6236)+1}/ar.alafasy`);
-                const data = await res.json();
-                document.getElementById('daily-ayah').innerText = data.data.text;
-                document.getElementById('ayah-ref').innerText = `${data.data.surah.name} - آية ${data.data.numberInSurah}`;
-            } catch(e) {}
+            try { const r = await fetch(`https://api.alquran.cloud/v1/ayah/${Math.floor(Math.random()*6236)+1}/ar.alafasy`); const d = await r.json(); document.getElementById('daily-ayah').innerText = d.data.text; document.getElementById('ayah-ref').innerText = `${d.data.surah.name} - ${d.data.numberInSurah}`; } catch(e){}
         }
 
         document.getElementById('view-toggle').onclick = function() { viewMode = viewMode === 'page' ? 'list' : 'page'; this.innerText = viewMode === 'page' ? 'صفحة' : 'آيات'; renderReader(); };
-        document.getElementById('font-size-slider').oninput = () => { if(document.getElementById('page-reader').classList.contains('active')) renderReader(); };
-        document.getElementById('surah-search').oninput = (e) => {
-            const v = e.target.value.toLowerCase();
-            renderSurahList(surahs.filter(s => s.name.includes(v) || s.englishName.toLowerCase().includes(v)));
-        };
+        document.getElementById('font-size-slider').oninput = () => { if(document.getElementById('page-reader').classList.contains('active')) renderReader(); else document.getElementById('font-size-val').innerText = document.getElementById('font-size-slider').value + 'px'; };
+        document.getElementById('surah-search').oninput = (e) => { const v = e.target.value.toLowerCase(); renderSurahList(surahs.filter(s => s.name.includes(v) || s.englishName.toLowerCase().includes(v))); };
 
-        function shareFullApp() { if(navigator.share) navigator.share({title:'تطبيق قبة', text:'قبة - رفيقك الإيماني اليومي (قرآن، أذكار، إذاعة، وتفسير) بواسطة محمد أحمد زايد.'}); }
-        function shareQuote() { const txt = document.getElementById('inspiration-text').innerText; if(navigator.share) navigator.share({text:txt + " - عبر تطبيق قبة"}); }
-        function shareContent(type) { if(type==='ayah') { const txt = document.getElementById('daily-ayah').innerText; if(navigator.share) navigator.share({text: txt}); } }
+        function shareFullApp() { if(navigator.share) navigator.share({title:'تطبيق قبة', text:'قبة - رفيقك الإيماني اليومي بواسطة محمد أحمد زايد.'}); }
+        function shareQuote() { const t = document.getElementById('inspiration-text').innerText; if(navigator.share) navigator.share({text:t + " - عبر تطبيق قبة"}); }
+        function shareContent(type) { if(type==='ayah') { const t = document.getElementById('daily-ayah').innerText; if(navigator.share) navigator.share({text: t}); } }
     </script>
 </body>
 </html>
