@@ -721,17 +721,22 @@
         window.openAdminLogin = () => {
             document.getElementById('admin-login-modal').classList.add('active');
         };
+document.getElementById('admin-submit-btn').onclick = () => {
+    // الحصول على المستخدم المسجل دخوله حالياً
+    const user = auth.currentUser;
+    
+    // هويتك السرية التي استخرجتها
+    const developerUID = "iKYDuU2yBVYH6nopwmaVqhIe51B3"; 
 
-        document.getElementById('admin-submit-btn').onclick = () => {
-            const phone = document.getElementById('admin-phone').value.trim();
-            const pass = document.getElementById('admin-pass').value.trim();
-            if (phone === '01220009779' && pass === '20029252002') {
-                document.getElementById('admin-login-modal').classList.remove('active');
-                window.triggerAdmin();
-            } else {
-                alert('بيانات خاطئة! يرجى المحاولة مرة أخرى.');
-            }
-        };
+    // التحقق من الهوية بدلاً من كلمة السر
+    if (user && user.uid === developerUID) {
+        document.getElementById('admin-login-modal').classList.remove('active');
+        window.triggerAdmin();
+        alert('تم التحقق من هوية المطور.. مرحباً بك يا أستاذ محمد');
+    } else {
+        alert('عذراً، هذا القسم مخصص للمطور فقط ولا يمكن الدخول بكلمة سر.');
+    }
+};
 
         window.addNewUser = async () => {
             const name = prompt('اسم المستخدم الجديد:');
