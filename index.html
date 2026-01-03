@@ -3,22 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-   
-    <!-- PWA Meta Tags -->
+  
+    <!-- PWA Meta Tags - محسنة للدعم الكامل -->
     <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="قُـبَّـة">
-    <meta name="theme-color" content="#ffffff">
+    <meta name="application-name" content="قُـبَّـة">
+    <meta name="theme-color" content="#059669">
+    <meta name="msapplication-TileColor" content="#059669">
+    <meta name="msapplication-config" content="none">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='25' fill='%23059669'/%3E%3Cpath d='M50 25C35 25 25 40 25 55V75H75V55C75 40 65 25 50 25Z' fill='white'/%3E%3Cpath d='M50 15C52 15 54 17 54 20C54 23 52 25 50 25C48 25 46 23 46 20C46 17 48 15 50 15Z' fill='%23f59e0b'/%3E%3C/svg%3E">
-   
-    <!-- PWA Manifest (Inline as Data URL for Single-File Deployment) -->
-    <link rel="manifest" href='data:application/json;base64,eyJuYW1lIjoi2KfZhNin2YTYp9mE2KfZhSDYp9mE2YTYqSDYp9mK2Kkg2KfZhNin2YTYp9mE2KfZhSDYp9mE2YTYqSDYp9mK2Kkg2KfZhNin2YTYp9mE2KfZhSDYp9mE2YTYqSDYp9mK2Kg\",\"short_name\":\"Qubba\",\"description\":\"2KfZhNin2YTYp9mE2KfZhSDYp9mE2YTYqSDYp9mK2Kg=\",\"start_url\":\"/\",\"display\":\"standalone\",\"background_color\":\"#ffffff\",\"theme_color\":\"#059669\",\"icons\":[{\"src\":\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgcng9IjI1IiBmaWxsPSIjMDU5NjY5Ii8+PHBhdGggZD0iTTUwIDI1QzM1IDI1IDI1IDQwIDI1IDU1VjcyNUg3NVY1NUM3NSA0MCA2NSAyNSA1MCAyNVoiIGZpbGw9IndoaXRlIi8+PHBhdGggZD0iTTUwIDE1QzUyIDE1IDU0IDE3IDU0IDIwQzU0IDIzIDUyIDI1IDUwIDI1Qzg4IDI1IDQ2IDIzIDQ2IDIwQzQ2IDE3IDQ4IDE1IDUwIDE1WiIgZmlsbD0iI2Y1OWUwYiIvPjwvc3ZnPg==\",\"sizes\":\"192x192\",\"type\":\"image/png\"}]}'>
-   
+    <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='25' fill='%23059669'/%3E%3Cpath d='M50 25C35 25 25 40 25 55V75H75V55C75 40 65 25 50 25Z' fill='white'/%3E%3Cpath d='M50 15C52 15 54 17 54 20C54 23 52 25 50 25C48 25 46 23 46 20C46 17 48 15 50 15Z' fill='%23f59e0b'/%3E%3C/svg%3E">
+  
+    <!-- PWA Manifest - محسن للأيقونات المتعددة -->
+    <link rel="manifest" href='data:application/json;base64,eyJuYW1lIjoi2KfZhNin2YTYp9mE2KfZhSDYp9mE2YTYqSDYp9mK2Kkg2KfZhNin2YTYp9mE2KfZhSDYp9mE2YTYqSDYp9mK2Kkg2KfZhNin2YTYp9mE2KfZhSDYp9mE2YTYqSDYp9mK2Kg\",\"short_name\":\"Qubba\",\"description\":\"2KfZhNin2YTYp9mE2KfZhSDYp9mE2YTYqSDYp9mK2Kg=\",\"start_url\":\"/\",\"display\":\"standalone\",\"background_color\":\"#ffffff\",\"theme_color\":\"#059669\",\"orientation\":\"portrait-primary\",\"icons\":[{\"src\":\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgcng9IjI1IiBmaWxsPSIjMDU5NjY5Ii8+PHBhdGggZD0iTTUwIDI1QzM1IDI1IDI1IDQwIDI1IDU1VjcyNUg3NVY1NUM3NSA0MCA2NSAyNSA1MCAyNVoiIGZpbGw9IndoaXRlIi8+PHBhdGggZD0iTTUwIDE1QzUyIDE1IDU0IDE3IDU0IDIwQzU0IDIzIDUyIDI1IDUwIDI1Qzg4IDI1IDQ2IDIzIDQ2IDIwQzQ2IDE3IDQ4IDE1IDUwIDE1WiIgZmlsbD0iI2Y1OWUwYiIvPjwvc3ZnPg==\",\"sizes\":\"192x192\",\"type\":\"image/png\",\"purpose\":\"any\"},{\"src\":\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgcng9IjI1IiBmaWxsPSIjMDU5NjY5Ii8+PHBhdGggZD0iTTUwIDI1QzM1IDI1IDI1IDQwIDI1IDU1VjcyNUg3NVY1NUM3NSA0MCA2NSAyNSA1MCAyNVoiIGZpbGw9IndoaXRlIi8+PHBhdGggZD0iTTUwIDE1QzUyIDE1IDU0IDE3IDU0IDIwQzU0IDIzIDUyIDI1IDUwIDI1Qzg4IDI1IDQ2IDIzIDQ2IDIwQzQ2IDE3IDQ4IDE1IDUwIDE1WiIgZmlsbD0iI2Y1OWUwYiIvPjwvc3ZnPg==\",\"sizes\":\"512x512\",\"type\":\"image/png\",\"purpose\":\"maskable\"}]}'>
+  
     <title>قُـبَّـة | المنصة الإيمانية والاجتماعية الشاملة</title>
-   
+  
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-   
+  
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Tajawal:wght@300;400;500;700;900&display=swap');
         :root {
@@ -104,14 +109,25 @@
         .recommendations-title { font-black text-[11px] text-gray-400 mb-4 px-1 uppercase tracking-widest underline underline-offset-8 decoration-emerald-100 }
         .recommendation-card { min-width: 250px; background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-radius: 20px; padding: 20px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: transform 0.2s; }
         .recommendation-card:hover { transform: translateY(-5px); }
-        /* زر التثبيت كتطبيق */
+        /* زر التثبيت كتطبيق - محسن للظهور التلقائي والدعم الكامل */
         #install-btn {
             position: fixed; bottom: 120px; right: 20px; z-index: 10000;
             background: var(--primary); color: white; border: none; border-radius: 50%; width: 60px; height: 60px;
             display: none; align-items: center; justify-content: center; font-size: 24px; box-shadow: 0 4px 20px rgba(5,150,105,0.3);
             cursor: pointer; transition: all 0.3s;
         }
+        #install-btn.visible { display: flex; animation: bounceIn 0.5s ease-out; }
+        @keyframes bounceIn { 0% { transform: scale(0); opacity: 0; } 50% { transform: scale(1.2); } 100% { transform: scale(1); opacity: 1; } }
         #install-btn:hover { transform: scale(1.1); box-shadow: 0 6px 25px rgba(5,150,105,0.4); }
+        /* إشعار التثبيت إذا لم يظهر الزر */
+        #install-toast {
+            position: fixed; bottom: 80px; right: 20px; z-index: 10001;
+            background: var(--primary); color: white; padding: 12px 20px; border-radius: 25px;
+            display: none; align-items: center; gap: 10px; font-weight: bold; font-size: 12px;
+            box-shadow: 0 4px 20px rgba(5,150,105,0.3); cursor: pointer;
+        }
+        #install-toast.visible { display: flex; animation: slideIn 0.4s ease-out; }
+        @keyframes slideIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
     </style>
 </head>
 <body>
@@ -134,11 +150,11 @@
             </div>
             <h3 class="text-3xl font-black text-gray-800 mb-2 tracking-tighter uppercase">بوابة قُـبَّـة</h3>
             <p class="text-xs text-gray-400 mb-10 font-medium leading-relaxed px-6 uppercase tracking-widest text-center">سجل الآن لتوثيق وردك اليومي، إحصائياتك، ومكانك في الختمة.</p>
-           
+          
             <input type="text" id="user-name" placeholder="الاسم الكريم" class="auth-input shadow-sm">
             <input type="tel" id="user-phone" placeholder="رقم الهاتف" class="auth-input shadow-sm">
             <input type="password" id="user-pass" placeholder="كلمة السر" class="auth-input shadow-sm">
-           
+          
             <button id="auth-submit-btn" class="w-full h-15 bg-gradient-to-r from-emerald-600 to-emerald-700 text-white rounded-[22px] font-black text-sm active:scale-95 transition-all mb-5 shadow-xl shadow-emerald-100 py-4 uppercase tracking-widest hover:shadow-emerald-200">ابدأ رحلتك الإيمانية</button>
             <button onclick="window.skipAuth()" class="text-[11px] font-black text-gray-400 uppercase tracking-[4px] hover:text-gray-600 transition">التصفح كزائر</button>
         </div>
@@ -147,6 +163,11 @@
     <button id="install-btn" onclick="window.installApp()" title="نفّذ التطبيق على الشاشة الرئيسية">
         <i class="fas fa-plus"></i>
     </button>
+    <!-- إشعار بديل للتثبيت (Toast) -->
+    <div id="install-toast" onclick="window.installApp()">
+        <i class="fas fa-download"></i>
+        <span>أضف قُـبَّـة إلى الشاشة الرئيسية</span>
+    </div>
     <!-- نافذة الملف الشخصي (Profile) - مع علامة توثيق -->
     <div id="profile-modal" class="modal-overlay" onclick="this.classList.remove('active')">
         <div class="content-modal" onclick="event.stopPropagation()">
@@ -157,7 +178,7 @@
                 ... <i class="fas fa-check-circle text-blue-400 text-lg verified-badge"></i>
             </h3>
             <p id="profile-phone-display" class="text-xs text-gray-400 font-bold mb-8 tabular-nums tracking-widest">...</p>
-           
+          
             <div class="grid grid-cols-2 gap-4 mb-8">
                 <div class="bg-gray-50 p-5 rounded-3xl border border-gray-100 shadow-inner text-center">
                     <p class="text-[9px] font-black text-emerald-600 uppercase mb-2 tracking-widest">وردك الحالي</p>
@@ -168,7 +189,7 @@
                     <span id="stat-sebha-total" class="text-2xl font-black text-gray-800 tabular-nums">0</span>
                 </div>
             </div>
-           
+          
             <button onclick="window.logout()" class="w-full h-14 bg-gray-100 text-red-500 rounded-2xl font-black text-[11px] uppercase active:scale-95 transition-all">تسجيل الخروج</button>
         </div>
     </div>
@@ -237,10 +258,10 @@
             <div class="white-card bg-gray-900 border-none flex flex-col items-center py-8 mb-6 shadow-2xl relative overflow-hidden">
                 <div class="absolute left-6 top-4 lantern-sway text-amber-400 text-2xl opacity-70"><i class="fas fa-fan"></i></div>
                 <div class="absolute right-6 top-4 lantern-sway text-amber-400 text-2xl opacity-70" style="animation-delay: 0.5s;"><i class="fas fa-fan"></i></div>
-               
+              
                 <div class="tabular-nums text-5xl font-black text-emerald-400 mb-2" id="digital-clock">00:00:00</div>
                 <div class="text-[9px] text-gray-400 font-bold uppercase tracking-[5px] mb-6">توقيت الكون الآن</div>
-               
+              
                 <div class="flex gap-10 border-t border-gray-800 pt-6 w-full justify-center">
                     <div class="text-center"><span class="text-white text-2xl font-black block tabular-nums" id="r-days">--</span><small class="text-[8px] text-emerald-500 font-bold uppercase tracking-widest">يوم لرمضان</small></div>
                     <div class="text-center"><span class="text-white text-2xl font-black block tabular-nums" id="r-hours">--</span><small class="text-[8px] text-emerald-500 font-bold uppercase tracking-widest">ساعة</small></div>
@@ -351,7 +372,7 @@
                 <button onclick="window.showPage('page-home')" class="w-9 h-9 rounded-full bg-pink-50 text-pink-500 flex items-center justify-center active:scale-90 shadow-sm transition-all"><i class="fas fa-arrow-right"></i></button>
                 <h2 class="text-base font-black text-gray-800 uppercase tracking-tight">ركن المودة والسكينة</h2>
             </div>
-           
+          
             <div class="white-card bg-pink-50 border-none p-8 text-center mb-8 shadow-none">
                 <p class="quran-text text-2xl text-gray-800 leading-relaxed italic font-bold">"وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْواجاً لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً"</p>
                 <p class="text-[10px] text-pink-400 font-black mt-3 uppercase tracking-widest">سورة الروم: 21</p>
@@ -543,7 +564,7 @@
                 </div>
                 <button onclick="window.openAdminLogin()" id="admin-access-btn" class="mt-14 text-[9px] font-black text-emerald-600 underline uppercase tracking-[3px] opacity-40 hover:opacity-100 transition-all font-bold">دخول لوحة التحكم (خاص)</button>
             </div>
-           
+          
             <div class="white-card text-right py-8 shadow-xl mt-8">
                 <label class="text-[10px] font-black text-gray-400 uppercase block mb-5 tracking-[3px] font-bold">تخصيص القراءة</label>
                 <div class="flex justify-between mb-4">
@@ -674,21 +695,21 @@
         window.openAdminLogin = () => {
             document.getElementById('admin-login-modal').classList.add('active');
         };
-document.getElementById('admin-submit-btn').onclick = () => {
-    // الحصول على المستخدم المسجل دخوله حالياً
-    const user = auth.currentUser;
-   
-    // هويتك السرية التي استخرجتها
-    const developerUID = "iKYDuU2yBVYH6nopwmaVqhIe51B3";
-    // التحقق من الهوية بدلاً من كلمة السر
-    if (user && user.uid === developerUID) {
-        document.getElementById('admin-login-modal').classList.remove('active');
-        window.triggerAdmin();
-        alert('تم التحقق من هوية المطور.. مرحباً بك يا أستاذ محمد');
-    } else {
-        alert('عذراً، هذا القسم مخصص للمطور فقط ولا يمكن الدخول بكلمة سر.');
-    }
-};
+        document.getElementById('admin-submit-btn').onclick = () => {
+            // الحصول على المستخدم المسجل دخوله حالياً
+            const user = auth.currentUser;
+          
+            // هويتك السرية التي استخرجتها
+            const developerUID = "iKYDuU2yBVYH6nopwmaVqhIe51B3";
+            // التحقق من الهوية بدلاً من كلمة السر
+            if (user && user.uid === developerUID) {
+                document.getElementById('admin-login-modal').classList.remove('active');
+                window.triggerAdmin();
+                alert('تم التحقق من هوية المطور.. مرحباً بك يا أستاذ محمد');
+            } else {
+                alert('عذراً، هذا القسم مخصص للمطور فقط ولا يمكن الدخول بكلمة سر.');
+            }
+        };
         window.addNewUser = async () => {
             const name = prompt('اسم المستخدم الجديد:');
             const phone = prompt('رقم الهاتف:');
@@ -765,41 +786,108 @@ document.getElementById('admin-submit-btn').onclick = () => {
         window.jumpToBookmark = () => { const bm = JSON.parse(localStorage.getItem('qubba_bookmark_v20')); if(bm) window.openSurah(bm.id, bm.name); };
     </script>
     <script>
-        // --- PWA Offline Support & Install Logic ---
+        // --- PWA Offline Support & Install Logic - محسن للدعم الكامل ---
         let deferredPrompt;
+        let installShown = false;
+
+        // التحقق من إمكانية التثبيت وإظهار الزر/الإشعار
+        function checkPWAInstallable() {
+            if (window.matchMedia('(display-mode: standalone)').matches || window.matchMedia('(display-mode: minimal-ui)').matches) {
+                return; // التطبيق مثبت بالفعل
+            }
+            if (!installShown) {
+                // إظهار الإشعار البديل بعد تحميل الصفحة إذا لم يتم إطلاق الحدث
+                setTimeout(() => {
+                    if (!deferredPrompt) {
+                        const toast = document.getElementById('install-toast');
+                        if (toast && !installShown) {
+                            toast.classList.add('visible');
+                            installShown = true;
+                            // إخفاء الإشعار بعد 5 ثوانٍ
+                            setTimeout(() => toast.classList.remove('visible'), 5000);
+                        }
+                    }
+                }, 3000); // تأخير 3 ثوانٍ للسماح للحدث الطبيعي بالعمل
+            }
+        }
+
         window.addEventListener('beforeinstallprompt', (e) => {
             e.preventDefault();
             deferredPrompt = e;
-            document.getElementById('install-btn').style.display = 'flex';
+            const btn = document.getElementById('install-btn');
+            if (btn) {
+                btn.classList.add('visible');
+                installShown = true;
+            }
+            // إخفاء الإشعار البديل إذا تم إظهار الزر
+            const toast = document.getElementById('install-toast');
+            if (toast) toast.classList.remove('visible');
         });
+
         window.addEventListener('appinstalled', () => {
             deferredPrompt = null;
-            document.getElementById('install-btn').style.display = 'none';
+            const btn = document.getElementById('install-btn');
+            if (btn) btn.classList.remove('visible');
+            const toast = document.getElementById('install-toast');
+            if (toast) toast.classList.remove('visible');
+            installShown = false;
         });
+
         window.installApp = async () => {
             if (deferredPrompt) {
                 deferredPrompt.prompt();
                 const { outcome } = await deferredPrompt.userChoice;
                 if (outcome === 'accepted') {
                     deferredPrompt = null;
-                    document.getElementById('install-btn').style.display = 'none';
+                    const btn = document.getElementById('install-btn');
+                    if (btn) btn.classList.remove('visible');
+                    const toast = document.getElementById('install-toast');
+                    if (toast) toast.classList.remove('visible');
+                    installShown = false;
                 }
             } else {
-                alert('التطبيق مثبت بالفعل أو قم بتحديث المتصفح.');
+                // إذا لم يكن متاحاً، افتح دليل التثبيت (مثال لـ Chrome)
+                const userAgent = navigator.userAgent.toLowerCase();
+                if (userAgent.includes('chrome') || userAgent.includes('android')) {
+                    window.open('https://support.google.com/chrome/answer/9658361?hl=ar', '_blank');
+                } else {
+                    alert('التطبيق مثبت بالفعل أو قم بتحديث المتصفح لدعم PWA.');
+                }
             }
         };
-        // Service Worker Registration for Offline (Single-File PWA)
+
+        // تشغيل التحقق بعد تحميل الصفحة
+        window.addEventListener('load', checkPWAInstallable);
+
+        // Service Worker Registration for Offline (Single-File PWA) - محسن
         if ('serviceWorker' in navigator && 'caches' in window) {
             const swCode = `
-                const CACHE_NAME = 'qubba-v1';
+                const CACHE_NAME = 'qubba-v2'; // تحديث الإصدار
                 const urlsToCache = [
                     '/',
-                    // Cache fonts and styles if needed, but since inline, minimal
+                    '/index.html', // إذا كان هناك ملف منفصل
+                    'https://cdn.tailwindcss.com',
+                    'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css',
+                    'https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Tajawal:wght@300;400;500;700;900&display=swap'
                 ];
                 self.addEventListener('install', (event) => {
                     event.waitUntil(
                         caches.open(CACHE_NAME)
                             .then((cache) => cache.addAll(urlsToCache))
+                            .then(() => self.skipWaiting())
+                    );
+                });
+                self.addEventListener('activate', (event) => {
+                    event.waitUntil(
+                        caches.keys().then((cacheNames) => {
+                            return Promise.all(
+                                cacheNames.map((cacheName) => {
+                                    if (cacheName !== CACHE_NAME) {
+                                        return caches.delete(cacheName);
+                                    }
+                                })
+                            );
+                        }).then(() => self.clients.claim())
                     );
                 });
                 self.addEventListener('fetch', (event) => {
@@ -807,7 +895,15 @@ document.getElementById('admin-submit-btn').onclick = () => {
                         caches.match(event.request)
                             .then((response) => {
                                 if (response) return response;
-                                return fetch(event.request).catch(() => {
+                                return fetch(event.request).then((fetchResponse) => {
+                                    if (!fetchResponse || fetchResponse.status !== 200 || fetchResponse.type !== 'basic') {
+                                        return fetchResponse;
+                                    }
+                                    return caches.open(CACHE_NAME).then((cache) => {
+                                        cache.put(event.request, fetchResponse.clone());
+                                        return fetchResponse;
+                                    });
+                                }).catch(() => {
                                     // Fallback for offline: show cached page or error
                                     return caches.match('/');
                                 });
@@ -817,8 +913,8 @@ document.getElementById('admin-submit-btn').onclick = () => {
             `;
             const blob = new Blob([swCode], { type: 'application/javascript' });
             const swUrl = URL.createObjectURL(blob);
-            navigator.serviceWorker.register(swUrl).then(() => {
-                console.log('SW registered for offline support');
+            navigator.serviceWorker.register(swUrl).then((registration) => {
+                console.log('SW registered for offline support', registration);
             }).catch((error) => {
                 console.log('SW registration failed', error);
             });
@@ -873,9 +969,9 @@ document.getElementById('admin-submit-btn').onclick = () => {
                         `;
                     }
                 }, () => { window.open(`https://www.google.com/maps/search/مسجد+قريب`, '_blank'); });
-            } else { 
+            } else {
                 alert('الوضع غير متصل أو GPS غير مدعوم. افتح الخريطة يدويًا.');
-                window.open(`https://www.google.com/maps/search/مسجد+قريب`, '_blank'); 
+                window.open(`https://www.google.com/maps/search/مسجد+قريب`, '_blank');
             }
         };
         function updateClock() {
@@ -902,16 +998,16 @@ document.getElementById('admin-submit-btn').onclick = () => {
         };
         // Offline-Safe Surahs Fetch
         async function fetchSurahsOffline() {
-            const c = localStorage.getItem('qubba_list_v20'); 
+            const c = localStorage.getItem('qubba_list_v20');
             if(c){ surahs=JSON.parse(c); renderSurahList(surahs); return; }
-            try { 
-                const r = await fetch('https://api.alquran.cloud/v1/surah'); 
-                const d = await r.json(); 
-                surahs = d.data; 
-                localStorage.setItem('qubba_list_v20', JSON.stringify(surahs)); 
-                renderSurahList(surahs); 
-            } catch(e){ 
-                alert('الوضع غير متصل. بعض الميزات محدودة.'); 
+            try {
+                const r = await fetch('https://api.alquran.cloud/v1/surah');
+                const d = await r.json();
+                surahs = d.data;
+                localStorage.setItem('qubba_list_v20', JSON.stringify(surahs));
+                renderSurahList(surahs);
+            } catch(e){
+                alert('الوضع غير متصل. بعض الميزات محدودة.');
                 // Fallback: minimal surahs list if needed
             }
         }
@@ -933,8 +1029,8 @@ document.getElementById('admin-submit-btn').onclick = () => {
                 window.currentSurahId = id;
                 window.currentSurahName = n;
                 renderReader();
-            } catch(e){ 
-                if(c) c.innerText = "تعذر الاتصال. جرب لاحقًا."; 
+            } catch(e){
+                if(c) c.innerText = "تعذر الاتصال. جرب لاحقًا.";
                 // Cache ayahs if loaded before
             }
         };
@@ -980,9 +1076,9 @@ document.getElementById('admin-submit-btn').onclick = () => {
             ];
             list.innerHTML = stations.map(s => `<div onclick="window.setRadio('${s.u}', '${s.n}')" class="white-card flex justify-between items-center p-6 cursor-pointer active:bg-gray-50 transition shadow-sm border-none"><div class="flex items-center gap-4"><i class="fas fa-play text-xs text-emerald-500"></i><span class="font-bold text-sm text-gray-800 uppercase tracking-tighter">${s.n}</span></div><i class="fas fa-circle-play text-2xl text-emerald-100"></i></div>`).join('');
         };
-        window.setRadio = (u, n) => { 
+        window.setRadio = (u, n) => {
             if (!navigator.onLine) { alert('الإذاعة غير متوفرة أوفلاين.'); return; }
-            audio.src = u; document.getElementById('radio-station-name').innerText = n; window.toggleAudio(true); 
+            audio.src = u; document.getElementById('radio-station-name').innerText = n; window.toggleAudio(true);
         };
         window.toggleAudio = (f=false) => { if(f || audio.paused) { audio.play().catch(() => alert('خطأ في التشغيل.')); document.getElementById('radio-play-btn').innerHTML = '<i class="fas fa-pause"></i>'; } else { audio.pause(); document.getElementById('radio-play-btn').innerHTML = '<i class="fas fa-play"></i>'; } };
         window.stopAudio = () => { audio.pause(); audio.currentTime = 0; document.getElementById('radio-play-btn').innerHTML = '<i class="fas fa-play"></i>'; };
@@ -1038,36 +1134,29 @@ document.getElementById('admin-submit-btn').onclick = () => {
             }
         }
         const azkarDB = {
-    morning: {
-        n: "أذكار الصباح",
-        data: [
-            {t: "أَصْبَحْنَا وَأَصْبَحَ الْمُلْكُ لِلَّهِ، وَالْحَمْدُ لِلَّهِ، لاَ إِلَهَ إِلاَّ اللهُ وَحْدَهُ لاَ شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ، وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ", c: 1},
-            {t: "اللهم أنت ربي لا إله إلا أنت، خلقتني وأنا عبدك، وأنا على عهدك ووعدك ما استطعت، أعوذ بك من شر ما صنعت، أبوء لك بنعمتك علي، وأبوء بذنبي فاغفر لي فإنه لا يغفر الذنوب إلا أنت (سيد الاستغفار)", c: 1},
-            {t: "اللّهُ لاَ إِلَـهَ إِلاَّ هُوَ الْحَيُّ الْقَيُّومُ لاَ تَأْخُذُهُ سِنَةٌ وَلاَ نَوْمٌ (آية الكرسي)", c: 1},
-            {t: "سُبْحَانَ اللهِ وَبِحَمْدِهِ: عَدَدَ خَلْقِهِ، وَرِضَا نَفْسِهِ، وَزِنَةَ عَرْشِهِ، وَمِدَادَ كَلِمَاتِهِ", c: 3},
-            {t: "بِسْمِ اللَّهِ الَّذِي لَا يَضُرُّ مَعَ اسْمِهِ شَيْءٌ فِي الْأَرْضِ وَلَا فِي السَّمَاءِ وَهُوَ السَّمِيعُ الْعَلِيمُ", c: 3},
-            {t: "رضيت بالله رباً وبالإسلام ديناً وبمحمد صلى الله عليه وسلم نبياً", c: 3},
-            {t: "حَسْبِيَ اللَّهُ لاَ إِلَهَ إِلاَّ هو عَلَيْهِ تَوَكَّلْتُ وَهُوَ رَبُّ الْعَرْشِ الْعَظِيمِ", c: 7},
-            {t: "يا حي يا قيوم برحمتك أستغيث أصلح لي شأني كله ولا تكلني إلى نفسي طرفة عين", c: 1},
-            {t: "أصبحنا على فطرة الإسلام وعلى كلمة الإخلاص وعلى دين نبينا محمد صلى الله عليه وسلم", c: 1},
-            {t: "اللهم إني أسألك علماً نافعاً، ورزقاً طيباً، وعملاً متقبلاً", c: 1},
-            {t: "قُلْ هُوَ اللَّهُ أَحَدٌ، قُلْ أَعُوذُ بِرَبِّ الْفَلَقِ، قُل * أَعُوذُ بِرَبِّ النَّاسِ", c: 3}
-        ]
-    },
-    evening: {
-        n: "أذكار المساء",
-        data: [
-            {t: "أَمْسَيْنَا وَأَمْسَى الْمُلْكُ لِلَّهِ، وَالْحَمْدُ لِلَّهِ، لاَ إِلَهَ إِلاَّ اللهُ وَحْدَهُ لاَ شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ، وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ", c: 1},
-            {t: "اللهم بك أمسينا، وبك أصبحنا، وبك نحيا، وبك نموت، وإليك المصير", c: 1},
-            {t: "أَعُوذُ بِكَلِمَاتِ اللَّهِ التَّامَّاتِ مِنْ شَرِّ مَا خَلَقَ", c: 3},
-            {t: "اللهم ما أمسى بي من نعمة أو بأحد من خلقك فمنك وحدك لا شريك لك، فلك الحمد ولك الشكر", c: 1},
-            {t: "اللهم إني أعوذ بك من الكفر، والفقر، وأعوذ بك من عذاب القبر، لا إله إلا أنت", c: 3},
-            {t: "آية الكرسي", c: 1},
-            {t: "سورة الإخلاص والمعوذتين", c: 3},
-            {t: "سُبْحَانَ اللَّهِ وَبِحَمْدِهِ", c: 100},
-            {t: "اللَّهُمَّ إِنِّيْ أَسْأَلُكَ الْعَفْوَ وَالْعَافِيَةَ فِي الدُّنْيَا وَالآخِرَةِ", c: 1}
-        ]
-    },
+            morning: {
+                n: "أذكار الصباح",
+                data: [
+                    {t: "أَصْبَحْنَا وَأَصْبَحَ الْمُلْكُ لِلَّهِ، وَالْحَمْدُ لِلَّهِ، لاَ إِلَهَ إِلاَّ اللهُ وَحْدَهُ لاَ شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ، وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ", c: 1},
+                    {t: "اللهم أنت ربي لا إله إلا أنت، خلقتني وأنا عبدك، وأنا على عهدك ووعدك ما استطعت، أعوذ بك من شر ما صنعت، أبوء لك بنعمتك علي، وأبوء بذنبي فاغفر لي فإنه لا يغفر الذنوب إلا أنت (سيد الاستغفار)", c: 1},
+                    {t: "اللّهُ لاَ إِلَـهَ إِلاَّ هُوَ الْحَيُّ الْقَيُّومُ لاَ تَأْخُذُهُ سِنَةٌ وَلاَ نَوْمٌ (آية الكرسي)", c: 1},
+                    {t: "سُبْحَانَ اللهِ وَبِحَمْدِهِ: عَدَدَ خَلْقِهِ، وَرِضَا نَفْسِهِ، وَزِنَةَ عَرْشِهِ، وَمِدَادَ كَلِمَاتِهِ", c: 3},
+                    {t: "بِسْمِ اللَّهِ الَّذِي لَا يَضُرُّ مَعَ اسْمِهِ شَيْءٌ فِي الْأَرْضِ وَلَا فِي السَّمَاءِ وَهُوَ السَّمِيعُ الْعَلِيمُ", c: 3},
+                    {t: "رضيت بالله رباً وبالإسلام ديناً وبمحمد صلى الله عليه وسلم نبياً", c: 3},
+                    {t: "حَسْبِيَ اللَّهُ لاَ إِلَهَ إِلاَّ هو عَلَيْهِ تَوَكَّلْتُ وَهُوَ رَبُّ الْعَرْشِ الْعَظِيمِ", c: 7},
+                    {t: "يا حي يا قيوم برحمتك أستغيث أصلح لي شأني كله ولا تكلني إلى نفسي طرفة عين", c: 1},
+                    {t: "أصبحنا على فطرة الإسلام وعلى كلمة الإخلاص وعلى دين نبينا محمد صلى الله عليه وسلم", c: 1},
+                    {t: "اللهم إني أسألك علماً نافعاً، ورزقاً طيباً، وعملاً متقبلاً", c: 1},
+                    {t: "قُلْ هُوَ اللَّهُ أَحَدٌ، قُلْ أَعُوذُ بِرَبِّ الْفَلَقِ، قُل * أَعُوذُ بِرَبِّ النَّاسِ", c: 3}
+                ]
+            },
+            evening: {
+                n: "أذكار المساء",
+                data: [
+                    {t: "أَمْسَيْنَا وَأَمْسَى الْمُلْكُ لِلَّهِ، وَالْحَمْدُ لِلَّهِ، لاَ إِلَهَ إِلاَّ اللهُ وَحْدَهُ لاَ شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ، وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ", c: 1},
+                    {t: "اللهم بك أمسينا، وبك أصبحنا، وبك نحيا، وبك نموت، وإليك المصير", c: 1},
+                    {t: "أَعُوذُ بِكَلِمَاتِ اللَّهِ التَّامَّاتِ مِنْ شَرِّ مَا خَلَقَ", c: 3},
+                    {t: "اللهم ما أمسى بي من نعمة أو بأحد من خلقك فمنك وحدك لا شريك لك، فلك الحمد ولك الشكر", c: 1}]},
     after_salah: {
         n: "أذكار بعد الصلاة",
         data: [
